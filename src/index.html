@@ -3,42 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <title>PayPata</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <nav>
-      <img src="./img/logopaypata.png" alt="icon_paypal" width="320" height="84" />
-      <ul>
-        <li>
-          <a href="#"> Inicio </a>
-        </li>
-        <li>
-          <a href="#">Sobre nosotros </a>
-        </li>
-        <li>
-          <a href="#">Crear Cuenta</a>
-        </li>
-        <li>
-          <a href="#">Iniciar sesión</a>
-        </li>
-      </ul>
-    </nav>
+    <header class="contenedor__header">
+      <img src="./img/logopaypata.png" alt="icon_paypal" width="320" height="84" class="contenedor__herder-img"/>
+      <nav class="contenedor__navbar">
+        <ul class="contendor__navbar-lista">
+          <li class="text-center">
+            <a href="#"> Inicio </a>
+          </li>
+          <li class="text-center">
+            <a href="#">Sobre nosotros </a>
+          </li>
+          <li class="text-center">
+            <a href="#" class="btn1">Crear Cuenta</a>
+          </li>
+          <li class="text-center">
+            <a href="#" class="btn1">Iniciar sesión</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <h2>Asociar Tarjeta</h2>
-      <section>
-        <div class="">
-          <label for="">N° targeta débito o creditos</label>
-          <input type="text">
-        </div>
-        <div class="">
-          <label for="">Fecha de vencimineto</label>
-          <input type="text">
-        </div>
-        <div class="">
-          <label for="">Código de seguridad</label>
-          <input type="text">
-        </div>
+      
+      <form class="contenedor__formulario">
+        <h2 class="textoh2">Asociar Tarjeta</h2>
+      <section class="contenedor__formulario-card">
+      
+          <input class="contenedor__formulario-input textoin" type="text" placeholder="N° targeta débito o creditos">
+        
+          <input class="contenedor__formulario-input textoin" type="text" placeholder="Fecha de vencimineto">
+        
+          <input class="contenedor__formulario-input textoin" type="text" placeholder="Código de seguridad">
+        <button class="btn2 textobtn">Asociar targeta</button>
       </section>
+      </form>
+      
     </main>
     <footer></footer>
     <script src="index.js" type="module"></script>
