@@ -46,13 +46,13 @@ como tecnologías.
 
 ### HTML y CSS
 
-* [ ] [Uso de HTML semántico.](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-* [ ] Uso de selectores de CSS.
-* [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
+* [X] [Uso de HTML semántico.](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
+* [X] Uso de selectores de CSS.
+* [X] Construir tu aplicación respetando el diseño realizado (maquetación).
 
 ### DOM
 
-* [ ] Uso de selectores del DOM.
+* [X] Uso de selectores del DOM.
 * [ ] Manejo de eventos del DOM.
 * [ ] [Manipulación dinámica del DOM.](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducci%C3%B3n)
 (appendChild |createElement | createTextNode| innerHTML | textContent | etc.)
@@ -60,10 +60,10 @@ como tecnologías.
 ### JavaScript
 
 * [ ] Manipulación de strings.
-* [ ] Uso de condicionales (if-else | switch | operador ternario)
+* [X] Uso de condicionales (if-else | switch | operador ternario)
 * [ ] Uso de bucles (for | for..in | for..of | while)
 * [ ] Uso de funciones (parámetros | argumentos | valor de retorno)
-* [ ] Declaración correcta de variables (const & let)
+* [X] Declaración correcta de variables (const & let)
 
 ### Testing
 
