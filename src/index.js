@@ -1,7 +1,7 @@
 import validator from "./validator.js";
 
 // DOM metodo getElementById
-const $ingresarTarjeta = document.getElementById("ingresarTarjeta");
+const $ingresarTarjeta = document.getElementById("ingresarTarjeta"); 123456789
 const $formulario = document.getElementById("formulario");
 
 // Funcion Ingresar Numero de Tarjeta
@@ -23,4 +23,4 @@ function numeroTarjeta(evento) {
 
 $formulario.onsubmit = numeroTarjeta;
 
-//
+
