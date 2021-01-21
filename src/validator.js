@@ -1,8 +1,7 @@
 const validator = {
   isValid: (crediCardNumber) => {
-    let crediCarValue = crediCardNumber.value;
-    let crediCarArray = crediCarValue.split("");
-    // let sumaImpar, sumaImparDosDigitos, sumaPar, sumaTotal = 0;
+    // Declaracion de variables
+    let crediCarArray = crediCardNumber.split("");
     let impares = [];
     let pares = [];
     let sumarImpar = 0;
@@ -40,23 +39,42 @@ const validator = {
         // console.log(`Suma de numeros 1D: ${sumarImpar}`);
       }
     }
-    // Suma de digitos posicion par 
+    // Suma de digitos posicion par
     for (let i = 0; i < pares.length; i++) {
       let numeroPosicionPar = pares[i];
       sumarPar += numeroPosicionPar;
       // console.log(`Posicion: ${numeroPosicionPar}`);
       // console.log(`Suma de numeros posicion par: ${sumarPar}`);
     }
-    sumaTotal = sumarImpar + sumarImparDosDigitos + sumarPar
+    sumaTotal = sumarImpar + sumarImparDosDigitos + sumarPar;
     console.log(`Suma total: ${sumaTotal}`);
-    // condición ? expr1 : expr2 
-    const validarCard = sumaTotal % 10 === 0 ? true :false
+    // condición ? expr1 : expr2
+    const validarCard = sumaTotal % 10 === 0 ? true : false;
     console.log(validarCard);
-    return validarCard
+    return validarCard;
   },
+
   maskify: (creditCardNumber) => {
-    // return console.log(`Holas maskify ${creditCardNumber.value}`);
-    return creditCardNumber.value;
+    const creditArray = creditCardNumber.split("");
+    const newArrayFirst = []
+  
+    console.log(creditArray);
+    // Dividiendo el array en dos
+    const arrayFirst = creditArray.slice(0, -4);
+    console.log(arrayFirst);
+    const arraySecond = creditArray.slice(-4);
+    // console.log(arraySecond);
+    // Enmascarar  el primer array 
+    for (let i = 0; i < arrayFirst.length; i++) {
+       newArrayFirst.push('#')
+      //  console.log(newArrayFirst);
+    }
+    const newArrayCredit = newArrayFirst.concat(arraySecond)
+    let arrayToString = newArrayCredit.join('')
+    
+    // console.log(arrayToString);
+
+    return arrayToString;
   },
 };
 
