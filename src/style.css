@@ -191,19 +191,23 @@ body {
 
 /* Interactuar con javaScript */
 .contenedor__formulario-input.correcto{
-  border-color: #2ecc71;
+  border-color: #458807a9;
+  
 }
 
 .contenedor__formulario-input.error{
-  border-color: #e74c3c;;
+  border-color: #e74c3c;
+  
 }
 
-.contendor__formulario-form small {
-  color: #e74c3c;
+ .hidden__small{
+  
   visibility: hidden;
 }
 
-.contendor__formulario-form.error small{
+.visible__small {
+  color: #91433a;
+  font-size: 1.2rem;
   visibility: visible;
 }
 
@@ -243,4 +247,52 @@ body {
 }
 .off{
   display: none;
+}
+
+/* Modal */
+
+.modal {
+  background: rgba(53, 52, 52, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.activarModal{
+  visibility: visible;
+}
+
+.modal__contenedor{
+  background: #e2dede;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 0.4rem;
+  padding: 1.2rem;
+  text-align: center;
+  color: #252628;
+  font-weight: 300;
+  width: 35rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  
+}
+
+.modal__contenedor .btnCerrar {
+  line-height: 1rem;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  color: #bbbbbb;
+  transition: 0.3s ease all;
+}
+
+.modal__contenedor .btnCerrar:hover{
+  color: #252628;
 }

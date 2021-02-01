@@ -1,105 +1,162 @@
 import validator from "./validator.js";
 
-const inicio = document.getElementById("inicio");
+const contenedorInicio = document.getElementById("contenedorInicio");
 const formNuevoUsuario = document.getElementById("formNuevoUsuario");
-const formulario = document.getElementById("formulario");
-const btnInicio = document.getElementById("btnInicio");
-const btnNuevoUsuario1 = document.getElementById("btnNuevoUsuario1");
+const formularioTarjeta = document.getElementById("formularioTarjeta");
 const btnNuevoUsuario2 = document.getElementById("btnNuevoUsuario2");
-const btnSiguiente = document.getElementById("btnSiguiente");
-const btnAsociarTarjeta = document.getElementById("btnAsociarTarjeta");
+const numeroTarjeta = document.getElementById("numeroTarjeta");
+
+const fechaVencimiento = document.getElementById("fechaVencimiento");
+const codSeguridad = document.getElementById("codSeguridad");
+const mostrarTarjeta = document.getElementById("mostrarTarjeta");
+// const btnCerrarModal = document.getElementById("btnCerrarModal")
 
 // Entras para nuevo usuario
-const email = document.getElementById("email");
+
 const nombre = document.getElementById("nombre");
+const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password1 = document.getElementById("password1");
 
-const ingresarTarjeta = document.getElementById("ingresarTarjeta");
+const validarFormularioTarjeta = () => {
+  console.log("Estoy validando los datos");
+  const numeroTarjetaValue = numeroTarjeta.value.trim();
+  const codSeguridadValue = codSeguridad.value.trim();
+  console.log(codSeguridadValue);
 
-const revisarEntradasNuevoUsuario = () => {
-  // Quitar espacios
+  let numeroTarjetaValido =
+    numeroTarjetaValue === ""
+      ? generarError(numeroTarjeta, "No puede dejar el campo en blanco")
+      : isNaN(+numeroTarjetaValue)
+      ? generarError(numeroTarjeta, "Solo se acepta valores numéricos")
+      : numeroTarjetaValue.length < 16
+      ? generarError(
+          numeroTarjeta,
+          "Su número de tarjeta debe tener 16 caracteres"
+        )
+      : validator.isValid(numeroTarjetaValue) === false
+      ? generarError(numeroTarjeta, "Tu número de tarjeta no es válido")
+      : datoCorrecto(numeroTarjeta);
+
+  let codSeguridadValido =
+    codSeguridadValue === ""
+      ? generarError(codSeguridad, "No puede dejar el campo en blanco")
+      : codSeguridadValue.length < 3
+      ? generarError(
+          codSeguridad,
+          "El codigo de seguridad debe tener 3 caracteres"
+        )
+      : isNaN(+codSeguridadValue)
+      ? generarError(numeroTarjeta, "Solo se acepta valores numéricos")
+      : datoCorrecto(codSeguridad);
+  let datosCorrectos = numeroTarjetaValido && codSeguridadValido ? true : false;
+
+  return datosCorrectos;
+};
+
+const datoCorrecto = (input) => {
+  // console.log(`Informacion correcta`);
+  input.className = "contenedor__formulario-input textoin correcto";
+  const small = input.nextElementSibling;
+  small.classList.add("hidden__small");
+  small.classList.remove("visible__small");
+  return true;
+};
+
+const generarError = (input, msg) => {
+  // console.log(`Este es un error`);
+  const small = input.nextElementSibling;
+  small.classList.remove("hidden__small");
+  small.classList.add("visible__small");
+  input.className = "contenedor__formulario-input textoin error";
+  small.textContent = msg;
+  return false;
+};
+
+const validarFormularioUsuario = () => {
   const nombreValue = nombre.value.trim();
   const emailValue = email.value.trim();
   const passwordValue = password.value.trim();
   const password1Value = password1.value.trim();
+  // console.log(nombreValue,emailValue,passwordValue,password1Value);
 
-  if (nombreValue === "") {
-    generarErrorPara(nombre, "No puede dejar el campo nombre vacío");
-  } else {
-    exitosoPara(nombre);
-  }
+  let nombreValido =
+    nombreValue === ""
+      ? generarError(nombre, "No puede dejar el campo en blanco")
+      : datoCorrecto(nombre);
+  // console.log(`nombre: ${nombreValido}`);
+  let emailValido =
+    emailValue === ""
+      ? generarError(email, "No puede dejar el campo en blanco")
+      : datoCorrecto(email);
+  // console.log(`correo: ${emailValido}`);
 
-  if (emailValue === "") {
-    generarErrorPara(email, "No puede dejar el campo correo vacío");
-  } else if (!isEmail(emailValue)) {
-    generarErrorPara(emailValue, "El correo que ingreso no es válido");
-  } else {
-    exitosoPara(email);
-  }
+  let passwordValido =
+    passwordValue === ""
+      ? generarError(password, "No puede dejar el campo en blanco")
+      : datoCorrecto(password);
+  // console.log(`password: ${passwordValido}`);
 
-  if (passwordValue === "") {
-    generarErrorPara(password, "No puede dejar el campo password vacío");
-  } else {
-    exitosoPara(password);
-  }
-  if (password1Value === "") {
-    generarErrorPara(
-      password1,
-      "No puede dejar el campo confirmar password vacío"
-    );
-  } else if (passwordValue !== password1Value) {
-    generarErrorPara(password1Value, "Las contraseñas no coinciden");
-  } else {
-    exitosoPara(password1);
-  }
+  let password1Valido =
+    password1Value === ""
+      ? generarError(password1, "No puede dejar el campo en blanco")
+      : password1Value !== passwordValue
+      ? generarError(password1, "Las contraseñas no coinciden ")
+      : datoCorrecto(password1);
+  // console.log(`password1: ${password1Valido}`);
+
+  let datosCorrectos =
+    nombreValido && emailValido && passwordValido && password1Valido
+      ? true
+      : false;
+
+  // console.log(datosCorrectos);
+  return datosCorrectos;
 };
 
-const generarErrorPara = (entrada, mensaje) => {
-  const formularioControl = entrada.parentElement
-  const small = formularioControl.querySelector('small')
-  formularioControl.className = 'contenedor__formulario-input error'
-  small.innertText = mensaje
-};
-
-const exitosoPara = (entrada) => {
-  const formularioControl = entrada.parentElement
-  formularioControl.className = 'contenedor__formulario-input correcto'
-};
-
-const isEmail = (email) => {
-  return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email));
-};
-
-const pantallaInicio = () => {
-  inicio.classList.replace("off", "on");
-  formulario.classList.replace("on", "off");
-  formNuevoUsuario.classList.replace("on", "off");
-};
-
-const pantallaCrearUsuario = () => {
-  inicio.classList.replace("on", "off");
-  formNuevoUsuario.classList.replace("off", "on");
-};
-
-const formularioNuevoUsuario = (e) => {
-  console.log(`Estoy a punto de explotar `);
-  console.log(e);
+formularioTarjeta.addEventListener("submit", (e) => {
   e.preventDefault();
-  revisarEntradasNuevoUsuario();
+  console.log(`Click en asociar tarjeta`);
+  let rpta = validarFormularioTarjeta();
+  let encriptar = validator.maskify(numeroTarjeta.value);
+  if (rpta === true) {
+    mostrarTarjeta.textContent = `
+        La tarjeta N°: ${encriptar}
+    `;
+  }
+  modal.classList.add("activarModal");
+  // Limpiar Formulario
+  numeroTarjeta.value = "";
+  fechaVencimiento.value = "";
+  codSeguridad.value = "";
+});
 
-  // formNuevoUsuario.classList.replace("on", "off");
-  // formulario.classList.replace("off", "on");
-};
+formNuevoUsuario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let rpta = validarFormularioUsuario();
+  // console.log(rpta);
 
-const formularioValidacionTarjeta = () => {
-  console.log(`Ir a pantalla emergente`);
-};
- 
+  if (rpta === true) {
+    formNuevoUsuario.classList.replace("on", "off");
+    formularioTarjeta.classList.replace("off", "on");
+    // Limpiar formulario
+    nombre.value = "";
+    email.value = "";
+    password.value = "";
+    password1.value = "";
+  }
+});
 
-btnNuevoUsuario1.addEventListener("click", pantallaCrearUsuario);
-btnNuevoUsuario2.addEventListener("click", pantallaCrearUsuario);
-btnInicio.addEventListener("click", pantallaInicio);
-formNuevoUsuario.addEventListener('submit', formularioNuevoUsuario)
-btnAsociarTarjeta.addEventListener("click", formularioValidacionTarjeta);
+btnNuevoUsuario2.addEventListener("click", () => {
+  contenedorInicio.classList.replace("on", "off");
+  formNuevoUsuario.classList.replace("off", "on");
+});
 
+// btnCerrarModal.addEventListener('click', (e) =>{
+//     e.preventDefault()
+//       let cerrarModal = modal.classList.remove("activarModal")
+//       contenedorInicio.classList.replace("off", "on")
+    
+//     console.log(cerrarModal);
+
+//   })
