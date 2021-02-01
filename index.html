@@ -7,41 +7,152 @@
   </head>
   <body>
     <header class="contenedor__header">
-      <img src="./img/logopaypata.png" alt="icon_paypal" width="320" height="60" class="contenedor__herder-img"/>
+      <img
+        src="./img/logopaypata.png"
+        alt="icon_paypal"
+        width="320"
+        height="60"
+        class="contenedor__herder-img"
+      />
       <nav class="contenedor__navbar">
         <ul class="contendor__navbar-lista">
-          <li class="text-center">
-            <a href="#"> Inicio </a>
+          <li class="text-center textoin">
+            <a href="#" id="btnInicio"> Inicio </a>
           </li>
-          <li class="text-center">
+          <li class="text-center textoin">
             <a href="#">Sobre nosotros </a>
           </li>
           <li class="text-center">
-            <a href="#" class="btn1">Crear Cuenta</a>
+            <a href="#" class="btn1 textoin" id="btnNuevoUsuario1"
+              >Crear Cuenta</a
+            >
           </li>
           <li class="text-center">
-            <a href="#" class="btn1">Iniciar sesión</a>
+            <a href="#" class="btn1 textoin">Iniciar sesión</a>
           </li>
         </ul>
       </nav>
     </header>
-    <main>
-      
-      <form class="contenedor__formulario" id="formulario">
-        <h2 class="textoh2">Asociar Tarjeta</h2>
-      <section class="contenedor__formulario-card">
-      
-          <input class="contenedor__formulario-input textoin" type="text" placeholder="N° tarjeta débito o credito" id="ingresarTarjeta">
-        
-          <input class="contenedor__formulario-input textoin" type="text" placeholder="Fecha de vencimiento">
-        
-          <input class="contenedor__formulario-input textoin" type="text" placeholder="Código de seguridad">
-        <button class="btn2 textobtn" type="submit">Asociar tarjeta</button>
+    <main id="main">
+      <!-- Contenedor de bienvenida  -->
+      <section class="contenedor0 on" id="contenedorInicio">
+        <section class="contenedor__informacion">
+          <div>
+            <p class="textoh2">
+              Quieres realizar pagos <br />
+              seguros
+            </p>
+            <p class="textop36">Compra lo quieras sin limites ni temor</p>
+          </div>
+          <div class="contenedor__informacion-btn">
+            <button class="btn3 textobtn" id="btnNuevoUsuario2">
+              Registrarme
+            </button>
+          </div>
+        </section>
+        <section class="contenedor__imagen">
+          <div class="linea__derecha">
+            <canvas class="linea__detalle"></canvas>
+          </div>
+          <figure>
+            <img src="./img//chip-card.png" alt="" />
+          </figure>
+          <p class="contenedor__imagen-texto">0000 0000 0000 0000 0000</p>
+          <canvas class="linea__detalle"> </canvas>
+        </section>
       </section>
+
+      <!-- Formulario de datos de Usuario -->
+      <form class="contenedor off" id="formNuevoUsuario">
+        <h2 class="textoh2">Crear una cuenta PayPata</h2>
+        <section class="section contenedor__formulario-card">
+          <div class="contendor__formulario-form">
+            <input
+              class="contenedor__formulario-input textoin"
+              type="text"
+              id="nombre"
+              placeholder="Nombre"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <input
+              class="contenedor__formulario-input textoin"
+              type="email"
+              id="email"
+              placeholder="Dirección de correo electrónico"
+            />
+            <small class="hidden__small">Error mensaje</small>
+
+            <input
+              class="contenedor__formulario-input textoin"
+              type="password"
+              id="password"
+              placeholder="Crear contraseña"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <input
+              class="contenedor__formulario-input textoin"
+              type="password"
+              id="password1"
+              placeholder="Confirmar contraseña"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <button class="btn2 textobtn" type="submit" id="btnSiguiente">
+              Siguiente
+            </button>
+          </div>
+          <div class="linea__derecha">
+            <canvas class="linea__detalle"></canvas>
+          </div>
+        </section>
       </form>
-      
+
+      <!-- Formulario de  validacion de tarjeta -->
+      <form class="contenedor off" id="formularioTarjeta">
+        <h2 class="textoh2">Asociar Tarjeta</h2>
+        <section class="contenedor__formulario-card">
+          <div class="contendor__formulario-form">
+            <input
+              class="contenedor__formulario-input textoin"
+              type="text"
+              placeholder="N° tarjeta débito o credito"
+              id="numeroTarjeta"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <input
+              class="contenedor__formulario-input textoin"
+              id="fechaVencimiento"
+              type="month"
+              placeholder="Fecha de vencimiento"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <input
+              class="contenedor__formulario-input textoin"
+              type="text"
+              id="codSeguridad"
+              placeholder="Código de seguridad"
+            />
+            <small class="hidden__small">Error mensaje</small>
+            <button class="btn2 textobtn" id="btnAsociarTarjeta" type="submit">
+              Asociar tarjeta
+            </button>
+          </div>
+          <div class="linea__derecha">
+            <canvas class="linea__detalle"></canvas>
+          </div>
+        </section>
+      </form>
+      <div class="modal" id="modal">
+        <div class="modal__contenedor" id="modalContenedor">
+          <a href="#" id="btnCerrarModal" class="btnCerrar">x</a>
+          <figure>
+            <img src="./img/icons8-checked-100.png " width="70" alt="" />
+          </figure>
+          <h3 id="mostrarTarjeta">La tarjeta N°: ############4567</h3>
+          <p>Se asocio correctamente</p>
+          <p>Gracias por ser parte de PayPata</p>
+        </div>
+      </div>
     </main>
-    <footer></footer>
     <script src="index.js" type="module"></script>
   </body>
 </html>

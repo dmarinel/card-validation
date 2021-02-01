@@ -47,10 +47,10 @@ const validator = {
       // console.log(`Suma de numeros posicion par: ${sumarPar}`);
     }
     sumaTotal = sumarImpar + sumarImparDosDigitos + sumarPar;
-    console.log(`Suma total: ${sumaTotal}`);
+    // console.log(`Suma total: ${sumaTotal}`);
     // condición ? expr1 : expr2
     const validarCard = sumaTotal % 10 === 0 ? true : false;
-    console.log(validarCard);
+    // console.log(validarCard);
     return validarCard;
   },
 
@@ -58,10 +58,10 @@ const validator = {
     const creditArray = creditCardNumber.split("");
     const newArrayFirst = []
   
-    console.log(creditArray);
-    // Dividiendo el array en dos
+    // console.log(creditArray);
+    // Dividiendo  array en dos partes 
     const arrayFirst = creditArray.slice(0, -4);
-    console.log(arrayFirst);
+    // console.log(arrayFirst);
     const arraySecond = creditArray.slice(-4);
     // console.log(arraySecond);
     // Enmascarar  el primer array 
