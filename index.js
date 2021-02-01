@@ -9,6 +9,7 @@ const numeroTarjeta = document.getElementById("numeroTarjeta");
 const fechaVencimiento = document.getElementById("fechaVencimiento");
 const codSeguridad = document.getElementById("codSeguridad");
 const mostrarTarjeta = document.getElementById("mostrarTarjeta");
+const modal = document.getElementById("modal");
 // const btnCerrarModal = document.getElementById("btnCerrarModal")
 
 // Entras para nuevo usuario
@@ -120,10 +121,20 @@ formularioTarjeta.addEventListener("submit", (e) => {
   let rpta = validarFormularioTarjeta();
   let encriptar = validator.maskify(numeroTarjeta.value);
   if (rpta === true) {
-    mostrarTarjeta.textContent = `
-        La tarjeta N°: ${encriptar}
+
+    modal.innerHTML = `
+    <div class="modal__contenedor" id="modalContenedor">
+    <a href="#" id="btnCerrarModal" class="btnCerrar">x</a>
+    <figure>
+      <img src="./img/icons8-checked-100.png " width="70" alt="" />
+    </figure>
+    <h3 id="mostrarTarjeta">La tarjeta N°: ${encriptar}</h3>
+    <p>Se asocio correctamente</p>
+    <p>Gracias por ser parte de PayPata</p>
+  </div>   
     `;
   }
+
   modal.classList.add("activarModal");
   // Limpiar Formulario
   numeroTarjeta.value = "";
